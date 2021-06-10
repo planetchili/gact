@@ -6,7 +6,10 @@ jobs:
     steps:
       # This step checks out a copy of your repository.
       - uses: actions/checkout@v2
-      # This step references the directory that contains the action.
       - uses: ./.github/actions/hello-world-action
+        id: hello
         with:
           who-to-greet: 'My Butt'
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        
